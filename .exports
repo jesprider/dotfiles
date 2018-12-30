@@ -1,7 +1,5 @@
-export RANGER_LOAD_DEFAULT_RC=FALSE
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# NVM configuration
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
