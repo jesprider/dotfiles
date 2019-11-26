@@ -68,9 +68,15 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Disable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+# Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Disable press-and-hold for keys in favor of key repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
@@ -80,14 +86,92 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 ###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Save screenshots to the desktop
+defaults write com.apple.screencapture location -string "${HOME}/Pictures"
+
+# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+defaults write com.apple.screencapture type -string "png"
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Enable subpixel font rendering on non-Apple LCDs
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+# Enable HiDPI display modes (requires restart)
+sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Finder: disable window animations and Get Info animations
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Set Desktop as the default location for new Finder windows
+# For other paths, use `PfLo` and `file:///full/path/here/`
+defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Keep folders on top when sorting by name
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+# Disable the warning when changing a file extension
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+# Avoid creating .DS_Store files on network or USB volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# Use list view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Expand the following File Info panes:
+# “General”, “Open with”, and “Sharing & Permissions”
+defaults write com.apple.finder FXInfoPanesExpanded -dict \
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
+
+###############################################################################
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
+
+# Enable highlight hover effect for the grid view of a stack (Dock)
+defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
 # Set the icon size of Dock items to 36 pixels
 defaults write com.apple.dock tilesize -int 36
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
+
+# Enable spring loading for all Dock items
+defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
+
+# Show indicator lights for open applications in the Dock
+defaults write com.apple.dock show-process-indicators -bool true
 
 # Wipe all (default) app icons from the Dock
 # This is only really useful when setting up a new Mac, or if you don’t use
@@ -118,36 +202,46 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Add iOS & Watch Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true
 
 ###############################################################################
-# Finder                                                                      #
+# Mac App Store                                                               #
 ###############################################################################
 
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+# Enable the WebKit Developer Tools in the Mac App Store
+defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
-# Finder: disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
+# Enable Debug Menu in the Mac App Store
+defaults write com.apple.appstore ShowDebugMenu -bool true
 
-# Finder: show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
+# Enable the automatic update check
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool true
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# Keep folders on top when sorting by name
-defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+
+# Automatically download apps purchased on other Macs
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
+
+# Turn on app auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
+
+# Allow the App Store to reboot machine on macOS updates
+defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
+###############################################################################
+# Photos                                                                      #
+###############################################################################
+
+# Prevent Photos from opening automatically when devices are plugged in
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 
 ###############################################################################
 # Kill affected applications                                                  #
