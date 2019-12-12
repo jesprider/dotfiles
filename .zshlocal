@@ -1,0 +1,41 @@
+#
+# nvm configuration
+export EDITOR=vim
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#
+# Use vim keybindings with zsh
+bindkey -v
+export KEYTIMEOUT=1
+
+#
+# pyenv configuration
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+#
+# Aliases
+alias virtualenv="~/w/python-deps/venv/bin/virtualenv"
+alias venv=". venv/bin/activate"
+alias tmux="TERM=xterm-256color tmux"
+alias black="~/w/python-deps/venv/bin/black"
+
+#
+# FZF configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#
+# Enter an ssh passphrase for 8 hours
+sshid(){
+  ssh-add -l | grep -q $(ssh-keygen -lf  ${1:-~/.ssh/id_rsa}|awk '{print $2}') || ssh-add -t 21600 ${1:-~/.ssh/id_rsa}
+}
+
+#
+# Don't exit shell on C-d
+set -o ignoreeof
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
