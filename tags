@@ -1,0 +1,55 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/e72a149/
+$FZF_DEFAULT_COMMAND	.vimrc	/^let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'$/;"	v
+<C-p>	.vimrc	/^nnoremap <C-p> :Files<Cr>$/;"	m
+<CR>	.vimrc	/^nmap <CR> o<Esc>$/;"	m
+<F12>	.vimrc	/^inoremap <F12> <C-o>:syntax sync fromstart<CR>$/;"	m
+<F12>	.vimrc	/^noremap <F12> <Esc>:syntax sync fromstart<CR>$/;"	m
+<Leader>T	.vimrc	/^nnoremap <Leader>T :Tags<CR>$/;"	m
+<Leader>p	.vimrc	/^noremap <Leader>p :r !pbpaste<CR><CR>$/;"	m
+<Leader>t	.vimrc	/^nnoremap <Leader>t :BTags<CR>$/;"	m
+<Leader>y	.vimrc	/^noremap <Leader>y :w !pbcopy<CR><CR>$/;"	m
+<S-Enter>	.vimrc	/^nmap <S-Enter> O<Esc>$/;"	m
+<S-TAB>	.vimrc	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
+<TAB>	.vimrc	/^inoremap <silent><expr> <TAB>$/;"	m
+<c-space>	.vimrc	/^inoremap <silent><expr> <c-space> coc#refresh()$/;"	m
+<cr>	.vimrc	/^inoremap <expr> <cr> pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
+<leader>f	.vimrc	/^nmap <leader>f  <Plug>(coc-format-selected)$/;"	m
+<leader>f	.vimrc	/^xmap <leader>f  <Plug>(coc-format-selected)$/;"	m
+<leader>rn	.vimrc	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
+<leader>ss	.vimrc	/^noremap <leader>ss :call StripWhitespace()<CR>$/;"	m
+<space>a	.vimrc	/^nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>$/;"	m
+<space>c	.vimrc	/^nnoremap <silent> <space>c  :<C-u>CocList commands<cr>$/;"	m
+<space>e	.vimrc	/^nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>$/;"	m
+<space>j	.vimrc	/^nnoremap <silent> <space>j  :<C-u>CocNext<CR>$/;"	m
+<space>k	.vimrc	/^nnoremap <silent> <space>k  :<C-u>CocPrev<CR>$/;"	m
+<space>o	.vimrc	/^nnoremap <silent> <space>o  :<C-u>CocList outline<cr>$/;"	m
+<space>p	.vimrc	/^nnoremap <silent> <space>p  :<C-u>CocListResume<CR>$/;"	m
+<space>s	.vimrc	/^nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>$/;"	m
+Fold	.vimrc	/^command! -nargs=? Fold :call     CocAction('fold', <f-args>)$/;"	c
+Format	.vimrc	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
+K	.vimrc	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
+LightlineFilename	.vimrc	/^function! LightlineFilename()$/;"	f
+StripWhitespace	.vimrc	/^function! StripWhitespace()$/;"	f
+[g	.vimrc	/^nmap <silent> [g <Plug>(coc-diagnostic-prev)$/;"	m
+]g	.vimrc	/^nmap <silent> ]g <Plug>(coc-diagnostic-next)$/;"	m
+g:coc_global_extensions	.vimrc	/^let g:coc_global_extensions = [$/;"	v
+g:fzf_files_options	.vimrc	/^let g:fzf_files_options = ['--preview=head -c 1024 {}', '--preview-window=right:30%']$/;"	v
+g:gruvbox_contrast_light	.vimrc	/^let g:gruvbox_contrast_light='hard'$/;"	v
+g:gutentags_exclude_filetypes	.vimrc	/^let g:gutentags_exclude_filetypes = [$/;"	v
+g:lightline	.vimrc	/^let g:lightline = {$/;"	v
+gd	.vimrc	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
+gi	.vimrc	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
+global	pip.conf	/^[global]$/;"	s
+gr	.vimrc	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
+gy	.vimrc	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
+mygroup	.vimrc	/^augroup mygroup$/;"	a
+s:check_back_space	.vimrc	/^function! s:check_back_space() abort$/;"	f
+s:show_documentation	.vimrc	/^function! s:show_documentation()$/;"	f
+virtualenv	pip.conf	/^require-virtualenv = true$/;"	k	section:global

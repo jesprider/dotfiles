@@ -58,6 +58,12 @@ Plug 'christoomey/vim-tmux-navigator'
 " Vim plugin, insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
+" Pairs of handy bracket mappings
+Plug 'tpope/vim-unimpaired'
+
+" A Vim plugin that manages your tag files
+Plug 'ludovicchabant/vim-gutentags'
+
 call plug#end()
 
 "===============================================================================
@@ -275,6 +281,10 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
 let g:fzf_files_options = ['--preview=head -c 1024 {}', '--preview-window=right:30%']
 
+" Ctags
+let g:gutentags_exclude_filetypes = [
+  \ 'node_modules',
+  \ ]
 "===============================================================================
 " Key bindings
 "===============================================================================
@@ -289,6 +299,8 @@ inoremap <F12> <C-o>:syntax sync fromstart<CR>
 
 " FZF remapping
 nnoremap <C-p> :Files<Cr>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
 
 " Strip trailing whitespace (\ss)
 function! StripWhitespace()
@@ -300,3 +312,10 @@ function! StripWhitespace()
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
+" Copying to clipboard
+noremap <Leader>y :w !pbcopy<CR><CR>
+noremap <Leader>p :r !pbpaste<CR><CR>
+
+" Tags
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>

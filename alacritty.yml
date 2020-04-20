@@ -32,3 +32,6 @@ font:
   # Point size
   size: 13.0
   use_thin_strokes: true
+
+scrolling:
+  history: 30000
