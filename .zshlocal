@@ -1,4 +1,8 @@
 #
+# Python 3
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
+
+#
 # nvm configuration
 
 export NVM_DIR="$HOME/.nvm"
@@ -12,15 +16,15 @@ export KEYTIMEOUT=1
 
 #
 # pyenv configuration
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 #
 # Aliases
-alias virtualenv="~/w/python-deps/venv/bin/virtualenv"
-alias venv=". venv/bin/activate"
-alias tmux="TERM=xterm-256color tmux"
-alias black="~/w/python-deps/venv/bin/black"
+# alias virtualenv="~/w/python-deps/venv/bin/virtualenv"
+# alias venv=". venv/bin/activate"
+# alias tmux="TERM=xterm-256color tmux"
+# alias black="~/w/python-deps/venv/bin/black"
 
 #
 # FZF configuration
