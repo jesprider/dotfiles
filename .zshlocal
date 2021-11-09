@@ -3,6 +3,12 @@
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 
 #
+# GoLang
+# export GOPATH=$HOME/go
+# export GOROOT="$(brew --prefix golang)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+#
 # nvm configuration
 
 export NVM_DIR="$HOME/.nvm"
