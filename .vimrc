@@ -64,6 +64,9 @@ Plug 'tpope/vim-unimpaired'
 " A Vim plugin that manages your tag files
 Plug 'ludovicchabant/vim-gutentags'
 
+" Adjusts 'shiftwidth' and 'expandtab' heuristically based on the current file
+Plug 'tpope/vim-sleuth'
+
 call plug#end()
 
 "===============================================================================
@@ -185,10 +188,12 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-snippets',
   \ 'coc-tailwindcss',
-  "\ 'coc-pairs',
   \ 'coc-eslint',
   \ 'coc-prettier',
   \ ]
+
+autocmd FileType sass setl iskeyword+=@-@
+autocmd FileType scss setl iskeyword+=@-@
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
