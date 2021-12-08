@@ -25,6 +25,8 @@ Although this may be automated as well, I don't do it since I'm not switching la
 - Vim-like file manager: [vifm](https://vifm.info/)
 - Code editor: [vim](https://www.vim.org/)
 - Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
+- Command-line finder: [fzf](https://github.com/junegunn/fzf)
+- `find` alternative: [fd](https://github.com/sharkdp/fd)
 
 
 ### Additional configuration (on top of macos.sh)
@@ -41,3 +43,8 @@ Although this may be automated as well, I don't do it since I'm not switching la
 - [JSON Formatter](https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa)
 - [Google Translate](https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb)
 - [Grammarly](https://chrome.google.com/webstore/detail/grammarly-for-chrome/kbfnbcaeplbcioakkpcpgfkobkghlhen)
+
+
+### Shortcuts
+- `cmd-space`: switch input source (language)
+- `opt-space`: Raycast (or Spotlight)
