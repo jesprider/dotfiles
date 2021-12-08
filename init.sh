@@ -1,17 +1,13 @@
 #!/usr/bin/env bash
 
-
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-#
 # Link vimrc configuration
 [ ! -f ~/.vimrc ] && { ln -s "${DIR}/.vimrc" ~; echo ".vimrc symlink created"; } || echo ".vimrc already exists"
 
-#
 # Link tmux configuration
 [ ! -f ~/.tmux.conf ] && { ln -s "${DIR}/.tmux.conf" ~; echo ".tmux.conf symlink created"; } || echo ".tmux.conf already exists"
 
-#
 # Link shell configuration
 if [ ! -f ~/.zshlocal ]; then
     ln -s "${DIR}/.zshlocal" ~
@@ -21,7 +17,6 @@ else
     echo ".zshlocal already exists"
 fi
 
-#
 # Link pip configuration
 if [ ! -f ~/.config/pip/pip.conf ]; then
     mkdir -p ~/.config/pip
@@ -31,7 +26,6 @@ else
     echo "pip.conf already exists"
 fi
 
-#
 # Link alacritty configuration
 if [ ! -f ~/.config/alacritty/alacritty.yml ]; then
     mkdir -p ~/.config/alacritty
