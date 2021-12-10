@@ -33,7 +33,7 @@ scrolling:
 # Font configuration
 font:
   # Point size
-  size: 13.0
+  size: 14.0
 
   # Thin stroke font rendering (macOS only)
   #
