@@ -19,7 +19,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 
 " Things you can do with fzf and Vim.
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  } }
 Plug 'junegunn/fzf.vim'
 
 " Theme
@@ -78,6 +78,12 @@ set encoding=utf-8
 let g:gruvbox_contrast_light='hard'
 set background=light
 colorscheme gruvbox
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " Enable syntax highlighting
 syntax on
@@ -283,8 +289,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
-let g:fzf_files_options = ['--preview=head -c 1024 {}', '--preview-window=right:30%']
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git'
+let $FZF_DEFAULT_OPTS="--preview-window='right:50%' --layout=reverse"
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.6, 'relative': v:true, 'yoffset': 1.0 } }
 
 " Ctags
 let g:gutentags_exclude_filetypes = [
@@ -324,3 +331,6 @@ noremap <Leader>p :r !pbpaste<CR><CR>
 " Tags
 nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
+
+" Set 2 spaces for yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
