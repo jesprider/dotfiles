@@ -34,3 +34,12 @@ if [ ! -f ~/.config/alacritty/alacritty.yml ]; then
 else
     echo "alacritty.yml already exists"
 fi
+
+# Link karabiner configuration
+if [ ! -f ~/.config/karabiner/karabiner.json ]; then
+    mkdir -p ~/.config/karabiner
+    ln -s "${DIR}/karabiner.json" ~/.config/karabiner
+    echo "karabiner.json symlink created"
+else
+    echo "karabiner.json already exists"
+fi
