@@ -74,6 +74,9 @@ call plug#end()
 "===============================================================================
 set encoding=utf-8
 
+" Eliminate escape delay time
+set timeoutlen=1000 ttimeoutlen=0
+
 " Theme
 let g:gruvbox_contrast_light='hard'
 set background=light
