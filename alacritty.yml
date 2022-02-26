@@ -33,6 +33,8 @@ scrolling:
 
 # Font configuration
 font:
+  normal:
+    family: "MesloLGS NF"
   # Point size
   size: 14.0
 
