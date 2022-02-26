@@ -37,9 +37,8 @@ fi
 
 # Link karabiner configuration
 if [ ! -f ~/.config/karabiner/karabiner.json ]; then
-    mkdir -p ~/.config/karabiner
-    ln -s "${DIR}/karabiner.json" ~/.config/karabiner
-    echo "karabiner.json symlink created"
+    ln -s "${DIR}/karabiner" ~/.config
+    echo "karabiner symlink created"
 else
-    echo "karabiner.json already exists"
+    echo "karabiner already exists"
 fi
