@@ -25,6 +25,7 @@ Here is a list of tools I'm regularly using. Although the installation of these 
 - Terminal multiplexer: [tmux](https://github.com/tmux/tmux)
 - Command-line finder: [fzf](https://github.com/junegunn/fzf)
 - `find` alternative: [fd](https://github.com/sharkdp/fd)
+- Disk cleanup tool: [Pretty Clean](https://pretty-clean.github.io/)
 
 ### Chrome extensions
 - [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb)
