@@ -1,2 +1,26 @@
-karabiner/automatic_backups/
+# macOS
 .DS_Store
+**/automatic_backups/
+
+# Editors
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Shell
+*.history
+.zsh_history
+.zcompdump*
+
+# Neovim plugin artifacts
+nvim/lazy-lock.json
+nvim/plugin/
+nvim/lazy/
+nvim/spell/
+nvim/after/
+
+# Backups
+*.bak
+*.orig

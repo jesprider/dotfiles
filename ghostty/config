@@ -1,0 +1,15 @@
+# Ghostty configuration
+# See https://ghostty.org/docs/config for all options
+# Leaving defaults — customize after trying the stock experience
+
+font-family = MesloLGS Nerd Font Mono
+font-size = 14
+
+# Treat Option as Alt so fzf Alt+C and other Alt keybindings work
+macos-option-as-alt = true
+
+# Vim-like split navigation
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right

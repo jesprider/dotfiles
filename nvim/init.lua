@@ -1,0 +1,2 @@
+-- ~/.config/nvim/init.lua — Neovim configuration
+-- Intentionally bare — add plugins/settings as needs arise.
