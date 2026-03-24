@@ -1,3 +1,7 @@
 # ~/.config/starship.toml
 # Intentionally using Starship defaults — customize after living with stock.
 # See https://starship.rs/config/ for all options.
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
