@@ -5,6 +5,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export PATH="$HOME/.local/bin:$PATH"
 
 # Don't exit shell on Ctrl-D
 set -o ignoreeof
