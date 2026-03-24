@@ -76,6 +76,11 @@ sshid() {
         || ssh-add -t 21600 "$key"
 }
 
+# ---- Edit command line in $EDITOR (Ctrl+E) ----
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 # ---- Local overrides (secrets, work tokens — not committed) ----
 [ -f ~/.zshlocal ] && source ~/.zshlocal
 
