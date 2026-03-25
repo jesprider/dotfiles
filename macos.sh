@@ -270,8 +270,13 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 # Automatically download apps purchased on other Macs
 defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
-# NOTE: com.apple.commerce AutoUpdate and AutoUpdateRestartRequired
-# are unreliable since Monterey — auto-update is managed by the App Store itself.
+
+###############################################################################
+# Menu bar                                                                    #
+###############################################################################
+
+# Show Sound icon in menu bar (not just inside Control Center)
+defaults -currentHost write com.apple.controlcenter Sound -int 18
 
 
 ###############################################################################
