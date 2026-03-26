@@ -278,6 +278,9 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 # Show Sound icon in menu bar (not just inside Control Center)
 defaults -currentHost write com.apple.controlcenter Sound -int 18
 
+# Show battery percentage in menu bar
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+
 
 ###############################################################################
 # Photos                                                                      #
