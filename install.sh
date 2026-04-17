@@ -27,7 +27,10 @@ choose() {
 
         IFS= read -rsn1 key
         if [[ $key == $'\x1b' ]]; then
-            read -rsn2 -t 0.1 esc || true
+            # Arrow keys send ESC [ A/B — bytes are already buffered, so a
+            # blocking 2-char read returns immediately. Avoid `-t <fraction>`:
+            # macOS ships bash 3.2, which rejects fractional timeouts.
+            read -rsn2 esc
             if [[ $esc == '[A' && $selected -gt 0 ]]; then
                 selected=$((selected - 1))
             elif [[ $esc == '[B' && $selected -lt $((${#options[@]} - 1)) ]]; then
