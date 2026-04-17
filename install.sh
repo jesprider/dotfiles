@@ -4,6 +4,45 @@
 
 set -euo pipefail
 
+# choose "Prompt?" option1 option2 ... — interactive single-select picker.
+# Navigate with ↑/↓, confirm with Enter. Prints selected option to stdout.
+choose() {
+    local prompt="$1"; shift
+    local options=("$@")
+    local selected=0 key esc i
+
+    tput civis >&2
+    trap 'tput cnorm >&2' EXIT
+
+    echo "$prompt" >&2
+    while true; do
+        for i in "${!options[@]}"; do
+            tput el >&2
+            if [[ $i -eq $selected ]]; then
+                echo "❯ ${options[$i]}" >&2
+            else
+                echo "  ${options[$i]}" >&2
+            fi
+        done
+
+        IFS= read -rsn1 key
+        if [[ $key == $'\x1b' ]]; then
+            read -rsn2 -t 0.01 esc || true
+            if [[ $esc == '[A' && $selected -gt 0 ]]; then
+                selected=$((selected - 1))
+            elif [[ $esc == '[B' && $selected -lt $((${#options[@]} - 1)) ]]; then
+                selected=$((selected + 1))
+            fi
+        elif [[ -z $key ]]; then
+            break
+        fi
+        tput cuu "${#options[@]}" >&2
+    done
+
+    tput cnorm >&2
+    echo "${options[$selected]}"
+}
+
 # Xcode Command Line Tools (required by Homebrew and many packages)
 if ! xcode-select -p &> /dev/null; then
     echo "Installing Xcode Command Line Tools..."
@@ -34,6 +73,13 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# Gather setup answers up-front so the rest runs unattended
+echo ""
+echo "=== Setup questions ==="
+ENV_TYPE=$(choose "Environment?" personal work)
+CONTAINER_RUNTIME=$(choose "Container runtime?" orbstack docker none)
+echo ""
 
 # Update Homebrew to ensure fresh formulae
 brew update
@@ -90,13 +136,16 @@ brew install --cask \
     obsidian \
     spotify
 
-# Container runtime — choose OrbStack (lightweight) or Docker Desktop
-echo ""
-read -p "Install [o]rbstack or [d]ocker? (o/d): " container_choice
-case "$container_choice" in
-    o|O) brew install --cask orbstack ;;
-    d|D) brew install --cask docker ;;
-    *)   echo "  skip: no container runtime selected" ;;
+# Apps — personal only
+if [[ "$ENV_TYPE" == "personal" ]]; then
+    brew install --cask keepassxc
+fi
+
+# Container runtime
+case "$CONTAINER_RUNTIME" in
+    orbstack) brew install --cask orbstack ;;
+    docker)   brew install --cask docker ;;
+    none)     echo "  skip: no container runtime selected" ;;
 esac
 
 # Populate tealdeer cache so `tldr` works on first use
