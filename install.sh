@@ -86,11 +86,12 @@ echo ""
 echo "=== Will install ==="
 echo "  shell:     starship, zsh-autosuggestions, zsh-fast-syntax-highlighting"
 echo "  cli:       fzf, fd, ripgrep, bat, eza, zoxide, yazi, jq, tealdeer"
-echo "  editors:   vim, neovim"
+echo "  editors:   vim, neovim, visual-studio-code, cursor"
 echo "  dev:       git, git-delta, uv, ruff, fnm"
-echo "  terminal:  ghostty, visual-studio-code, cursor, font-meslo-lg-nerd-font"
+echo "  terminal:  ghostty, font-meslo-lg-nerd-font"
 echo "  browsers:  google-chrome, arc"
-echo "  utils:     raycast, shottr, rectangle, pearcleaner, obsidian, spotify"
+echo "  utils:     raycast, shottr, rectangle, pearcleaner, obsidian"
+echo "  media:     spotify"
 if [[ "$ENV_TYPE" == "personal" ]]; then
     echo "  personal:  keepassxc"
 fi
@@ -130,6 +131,9 @@ brew install \
 brew install \
     vim \
     neovim
+brew install --cask \
+    visual-studio-code \
+    cursor
 
 # Dev tools
 brew install \
@@ -139,12 +143,10 @@ brew install \
     ruff \
     fnm
 
-# Apps — terminal & editors
+# Apps — terminal
 brew install --cask \
     font-meslo-lg-nerd-font \
-    ghostty \
-    visual-studio-code \
-    cursor
+    ghostty
 
 # Apps — browsers
 brew install --cask \
@@ -157,8 +159,10 @@ brew install --cask \
     shottr \
     rectangle \
     pearcleaner \
-    obsidian \
-    spotify
+    obsidian
+
+# Apps — media
+brew install --cask spotify
 
 # Apps — personal only
 if [[ "$ENV_TYPE" == "personal" ]]; then
