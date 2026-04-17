@@ -12,7 +12,11 @@
 set -euo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-eval "$(brew shellenv)" 2>/dev/null || true
+if command -v brew &> /dev/null; then
+    eval "$(brew shellenv)"
+else
+    echo "Homebrew is not available yet — the install step will set it up."
+fi
 
 run_step() {
     local label="$1"
