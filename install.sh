@@ -27,7 +27,7 @@ choose() {
 
         IFS= read -rsn1 key
         if [[ $key == $'\x1b' ]]; then
-            read -rsn2 -t 0.01 esc || true
+            read -rsn2 -t 0.1 esc || true
             if [[ $esc == '[A' && $selected -gt 0 ]]; then
                 selected=$((selected - 1))
             elif [[ $esc == '[B' && $selected -lt $((${#options[@]} - 1)) ]]; then
@@ -65,8 +65,6 @@ if ! xcode-select -p &> /dev/null; then
     echo "Xcode Command Line Tools installed."
 fi
 
-echo "Installing Homebrew packages and casks..."
-
 # Check if Homebrew is installed
 if ! command -v brew &> /dev/null; then
     echo "Homebrew not found. Installing..."
@@ -79,6 +77,29 @@ echo ""
 echo "=== Setup questions ==="
 ENV_TYPE=$(choose "Environment?" personal work)
 CONTAINER_RUNTIME=$(choose "Container runtime?" orbstack docker none)
+
+# Show what will be installed based on the answers
+echo ""
+echo "=== Will install ==="
+echo "  shell:     starship, zsh-autosuggestions, zsh-fast-syntax-highlighting"
+echo "  cli:       fzf, fd, ripgrep, bat, eza, zoxide, yazi, jq, tealdeer"
+echo "  editors:   vim, neovim"
+echo "  dev:       git, git-delta, uv, ruff, fnm"
+echo "  terminal:  ghostty, visual-studio-code, cursor, font-meslo-lg-nerd-font"
+echo "  browsers:  google-chrome, arc"
+echo "  utils:     raycast, shottr, rectangle, pearcleaner, obsidian, spotify"
+if [[ "$ENV_TYPE" == "personal" ]]; then
+    echo "  personal:  keepassxc"
+fi
+case "$CONTAINER_RUNTIME" in
+    orbstack|docker) echo "  container: $CONTAINER_RUNTIME" ;;
+esac
+echo ""
+
+if [[ $(choose "Looks good?" yes no) == "no" ]]; then
+    echo "Aborted."
+    exit 0
+fi
 echo ""
 
 # Update Homebrew to ensure fresh formulae
