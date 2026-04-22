@@ -87,7 +87,7 @@ echo "=== Will install ==="
 echo "  shell:     starship, zsh-autosuggestions, zsh-fast-syntax-highlighting"
 echo "  cli:       fzf, fd, ripgrep, bat, eza, zoxide, yazi, jq, tealdeer"
 echo "  editors:   vim, neovim, visual-studio-code, cursor"
-echo "  dev:       git, git-delta, uv, ruff, fnm"
+echo "  dev:       git, git-delta, uv, ruff, fnm, postman"
 echo "  terminal:  ghostty, font-meslo-lg-nerd-font"
 echo "  browsers:  google-chrome, arc"
 echo "  utils:     raycast, shottr, rectangle, pearcleaner, obsidian"
@@ -142,6 +142,7 @@ brew install \
     uv \
     ruff \
     fnm
+brew install --cask postman
 
 # Apps — terminal
 brew install --cask \

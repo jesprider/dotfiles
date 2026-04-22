@@ -84,6 +84,7 @@ The install step asks two questions up-front (arrow keys + Enter to pick) and th
 | [Pearcleaner](https://github.com/alienator88/Pearcleaner) | Pretty Clean | Clean app uninstaller |
 | [Rectangle](https://rectangleapp.com/) | — | Window manager with keyboard shortcuts |
 | [Obsidian](https://obsidian.md/) | — | Markdown-based knowledge base |
+| [Postman](https://www.postman.com/) | — | API client for testing HTTP requests |
 | [KeePassXC](https://keepassxc.org/) | — | Password manager (installed for `personal` environment only) |
 | [OrbStack](https://orbstack.dev/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) | — | Container runtime (picked during install — or skip) |
 
