@@ -110,6 +110,9 @@ defaults write -g com.apple.keyboard.fnState -bool true
 # Press "fn" key to do nothing
 defaults write com.apple.HIToolbox AppleFnUsageType -int 0
 
+# Trackpad: enable two-finger swipe for browser back/forward
+defaults write NSGlobalDomain AppleEnableSwipeNavigateWithScrolls -bool true
+
 # Trackpad: enable 3-finger drag
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
