@@ -17,7 +17,7 @@ This runs four steps in order: installs packages (`install.sh`), creates symlink
 
 The install step asks two questions up-front (arrow keys + Enter to pick) and then shows a summary of what will be installed before running anything:
 
-- **Environment** — `personal` or `work`. Personal adds a few extra apps (e.g. KeePassXC).
+- **Environment** — `personal` or `work`. Personal adds a few extra apps (e.g. KeePassXC, Google Drive).
 - **Container runtime** — `orbstack`, `docker`, or `none`.
 
 ---
@@ -85,7 +85,8 @@ The install step asks two questions up-front (arrow keys + Enter to pick) and th
 | [Rectangle](https://rectangleapp.com/) | — | Window manager with keyboard shortcuts |
 | [Obsidian](https://obsidian.md/) | — | Markdown-based knowledge base |
 | [Postman](https://www.postman.com/) | — | API client for testing HTTP requests |
-| [KeePassXC](https://keepassxc.org/) | — | Password manager (installed for `personal` environment only) |
+| [KeePassXC](https://keepassxc.org/) | — | Password manager (personal only) |
+| [Google Drive](https://www.google.com/drive/) | — | Cloud file sync (personal only) |
 | [OrbStack](https://orbstack.dev/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) | — | Container runtime (picked during install — or skip) |
 
 ### Chrome extensions
@@ -102,13 +103,13 @@ The install step asks two questions up-front (arrow keys + Enter to pick) and th
 
 **Git** — Prompts for `user.name` and `user.email` if not already configured. Sets `init.defaultBranch` to `main`. Configures delta as pager with line numbers and navigation.
 
-**Shell (.zshrc)** — Bare zsh with no framework. Includes: cached completions via `compinit`, autosuggestions, fast syntax highlighting, Starship prompt, fzf integration with fd, zoxide for smart directory jumping, git aliases, eza/bat aliases, and the `sshid` helper function. Machine-specific secrets go in `~/.zshlocal` (not committed).
+**Shell (.zshrc)** — Bare zsh with no framework, vi keybindings. Includes: cached completions via `compinit`, autosuggestions, fast syntax highlighting, Starship prompt, fzf integration with fd, zoxide (`q` command) for smart directory jumping, git aliases, eza/bat aliases, `sshid` helper function, and Ctrl+E to edit the current command line in `$EDITOR`. Machine-specific secrets go in `~/.zshlocal` (not committed).
 
-**Prompt (starship.toml)** — Using Starship defaults. Customize after trying the stock experience.
+**Prompt (starship.toml)** — Based on Starship defaults with full path display (no truncation).
 
-**Terminal (ghostty/config)** — Using Ghostty defaults with MesloLGS Nerd Font at 14pt. Customize after trying the stock experience.
+**Terminal (ghostty/config)** — Ghostty with MesloLGS Nerd Font at 14pt, Option-as-Alt for fzf keybindings, and Ctrl+H/J/K/L for vim-like split navigation.
 
-**macOS (macos.sh)** — System preferences automated via `defaults write`. Covers: Finder (show hidden files, path bar, list view), Dock (auto-hide, no recents, small icons), keyboard (fast repeat, F-keys as standard, fn → do nothing), trackpad (tap to click, 3-finger drag), screenshots (PNG to ~/Pictures), and more. See the file for the complete list.
+**macOS (macos.sh)** — System preferences automated via `defaults write`. Covers: Finder (show hidden files, path bar, list view), Dock (auto-hide, no recents, small icons), keyboard (fast repeat, F-keys as standard, fn → do nothing), trackpad (tap to click, 3-finger drag, two-finger swipe for browser back/forward), screenshots (PNG to ~/Pictures), hot corners disabled, menu bar (Sound icon, battery percentage), and more. See the file for the complete list.
 
 ---
 
@@ -119,8 +120,8 @@ After running `setup.sh`, configure these through System Settings:
 - **Keyboard → Modifier Keys:** Make Caps Lock act as Ctrl
 - **Keyboard → Keyboard Shortcuts → Input Sources:** Set `Cmd+Space` to switch input source (language)
 - **Keyboard → Keyboard Shortcuts → Mission Control:** Disable `Ctrl+Up`, `Ctrl+Down`, `Ctrl+Left`, `Ctrl+Right` — they interfere with terminal shortcuts
-- **Mouse → More Gestures:** Swipe between pages
 - **Raycast preferences:** Confirm `Opt+Space` as hotkey (should be set by default on first launch)
+- **Displays → Night Shift:** Set to "Sunset to Sunrise"
 
 ---
 

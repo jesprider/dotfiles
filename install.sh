@@ -93,7 +93,7 @@ echo "  browsers:  google-chrome, arc"
 echo "  utils:     raycast, shottr, rectangle, pearcleaner, obsidian"
 echo "  media:     spotify"
 if [[ "$ENV_TYPE" == "personal" ]]; then
-    echo "  personal:  keepassxc"
+    echo "  personal:  keepassxc, google-drive"
 fi
 case "$CONTAINER_RUNTIME" in
     orbstack|docker) echo "  container: $CONTAINER_RUNTIME" ;;
@@ -167,7 +167,9 @@ brew install --cask spotify
 
 # Apps — personal only
 if [[ "$ENV_TYPE" == "personal" ]]; then
-    brew install --cask keepassxc
+    brew install --cask \
+        keepassxc \
+        google-drive
 fi
 
 # Container runtime
