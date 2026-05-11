@@ -63,6 +63,7 @@ The install step asks two questions up-front (arrow keys + Enter to pick) and th
 | [yazi](https://github.com/sxyazi/yazi) | Ranger + vifm | Terminal file manager, Rust-based, async, image preview |
 | [jq](https://github.com/jqlang/jq) | — | JSON processor |
 | [git](https://git-scm.com/) | Xcode CLT git | Latest version via Brew, updated more frequently |
+| [GitHub CLI](https://cli.github.com/) (`gh`) | — | Issues, PRs, Actions, and API from the terminal |
 | [vim](https://www.vim.org/) | macOS built-in vim | Latest version via Brew |
 | [Neovim](https://neovim.io/) | — | Modern vim fork, LSP/treesitter ready |
 | [uv](https://github.com/astral-sh/uv) | pip, virtualenv, pyenv | Python package/project manager, Rust-based, handles Python versions too |
