@@ -38,6 +38,8 @@ The install step asks two questions up-front (arrow keys + Enter to pick) and th
 ├── nvim/init.lua     # Neovim configuration
 ├── pip.conf          # Pip configuration
 ├── .gitignore
+├── docs/             # Documentation and workflow notes
+├── skills/           # Workspace skills and scaffold helpers
 └── legacy/           # Previous configs (tmux, vim, alacritty, karabiner)
 ```
 
