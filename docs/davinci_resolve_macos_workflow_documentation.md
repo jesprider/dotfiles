@@ -1,14 +1,16 @@
 # DaVinci Resolve macOS Workflow & Folder Structure
 
+## Purpose
+
+A professional Resolve workflow should separate project assets, Resolve system files, backups, and exports. This document uses `~/Movies/yt/` as your personal project root while keeping the structure applicable to both regular videos and shorts.
+
 ## Goals
 
-This workflow is designed for:
-
-- Video editing in Davinci Resolve
-- Clean long-term project organization
-- Easy NAS archiving
-- Reliable backups
-- Professional-style Resolve workflow
+- Keep projects local and organized
+- Separate Resolve cache/backups from project media
+- Make archiving simple and reliable
+- Preserve original media and exported project backups
+- Support both short-form and long-form video workflows
 
 ---
 
@@ -17,27 +19,33 @@ This workflow is designed for:
 ## Global Structure
 
 ```text
-/Users/my-user/Movies/
+/Users/<your-user>/Movies/
 ├── Resolve/
 │   ├── Cache/
 │   ├── Backups/
 │   ├── ProjectLibrary/
 │   └── Assets/
-│
 └── yt/
-    ├── 001-video-title/
+    ├── 001-project-title/
+    ├── 002-project-title/
     └── shorts/
-        └── 001-shorts-title/
+        └── 001-short-title/
 ```
+
+Notes:
+
+- `yt/` is your project root and works for both full videos and shorts
+- Keep projects in `yt/` while they are active, then archive complete project folders to NAS
+- `shorts/` is optional if you prefer a dedicated short-form folder
 
 ---
 
-# Resolve Folder Purposes
+# Resolve Storage Locations
 
 ## Resolve/Cache
 
 ```text
-/Users/my-user/Movies/Resolve/Cache/
+/Users/<your-user>/Movies/Resolve/Cache/
 ```
 
 Purpose:
@@ -48,61 +56,61 @@ Purpose:
 - Fusion cache
 - Temporary Resolve-generated files
 
-Notes:
+Best practice:
 
-- Safe to delete later if needed
-- Best placed on fastest SSD available
+- Keep this on the fastest internal SSD available
+- Safe to delete when a project is finished or to reclaim space
 
 ---
 
 ## Resolve/Backups
 
 ```text
-/Users/my-user/Movies/Resolve/Backups/
+/Users/<your-user>/Movies/Resolve/Backups/
 ```
 
 Purpose:
 
-- Automatic Resolve backups
+- Automatic Resolve project backups
 - Live Save snapshots
 
 Recommended settings:
 
 - Enable Live Save
-- Backup every 10 minutes
-- Keep hourly and daily backups
+- Save backups every 10 minutes
+- Keep hourly and daily snapshots if disk space allows
 
 ---
 
 ## Resolve/ProjectLibrary
 
 ```text
-/Users/my-user/Movies/Resolve/ProjectLibrary/
+/Users/<your-user>/Movies/Resolve/ProjectLibrary/
 ```
 
 Purpose:
 
 - Dedicated Resolve project database location
 
-Notes:
+Why this helps:
 
-- Optional initially
-- Recommended later for cleaner project management
-- Easier to back up and migrate than default hidden macOS paths
+- Keeps the Resolve database separate from hidden defaults
+- Makes migrating, backing up, and restoring projects easier
+- Keeps project metadata transparent and portable
 
 ---
 
 ## Resolve/Assets
 
 ```text
-/Users/my-user/Movies/Resolve/Assets/
+/Users/<your-user>/Movies/Resolve/Assets/
 ```
 
 Purpose:
 
-Reusable assets shared across multiple projects.
+Shared assets that apply across multiple projects.
 
-Example structure:
+Example subfolders:
 
 ```text
 Assets/
@@ -111,23 +119,23 @@ Assets/
 ├── LUTs/
 ├── Overlays/
 ├── LowerThirds/
-├── Memes/
 └── Transitions/
 ```
 
-Notes:
+Guidelines:
 
-- Do not duplicate reusable assets per project
-- Keep project-specific assets inside the project folder
+- Use this folder for reusable elements only
+- Do not duplicate these assets inside every project
+- Keep project-specific media inside each project folder
 
 ---
 
-# Per-Project Structure
+# Project Folder Structure
 
-Example project:
+## Example project layout
 
 ```text
-/Users/my-user/Movies/yt/Active/001-video-title/
+/Users/<your-user>/Movies/yt/001-project-title/
 ├── 01_Footage/
 ├── 02_Audio/
 ├── 03_Graphics/
@@ -136,95 +144,107 @@ Example project:
 └── 07_Proxies/
 ```
 
+Notes:
+
+- Use consistent numbering to keep folders ordered
+- Keep all source and project files within the project folder
+- Archive the whole folder together when a project is finished
+
 ---
 
-## Folder Details
+## 01_Footage
 
-### 01_Footage
-
-Original camera footage.
+Contains original camera footage and source media.
 
 Important:
 
 - Never rename files after importing into Resolve
-- Keep original camera filenames
-- Organize using folders and Resolve bins instead
+- Keep original camera filenames intact
+- Organize using folders and Resolve bins, not by renaming media
 
 ---
 
-### 02_Audio
+## 02_Audio
 
-Project-specific audio:
+Project-specific audio files, including:
 
 - Voiceovers
-- Recorded audio
+- Recorded interviews
 - Temporary music
 - Sound design
 
 ---
 
-### 03_Graphics
+## 03_Graphics
 
-Project-specific graphics:
+Project-specific graphics and visual assets, such as:
 
 - PNG overlays
-- Titles
-- Captions
+- Titles and lower thirds
+- Captions and subtitles
 - Thumbnails
-- Motion graphics
+- Motion graphics exports
 
 ---
 
-### 05_Project
+## 05_Project
 
-Contains exported Resolve project files.
+Exported Resolve project files live here.
 
 Example:
 
 ```text
 05_Project/
-├── short-v01.drp
-├── short-v02.drp
-└── short-final.drp
+├── project-v01.drp
+├── project-v02.drp
+└── project-final.drp
 ```
 
-Important:
+Professional rules:
 
-- `.drp` files are critical backups
-- Export regularly during editing
-- `.drp` files do NOT contain media
+- Export `.drp` files frequently during editing
+- `.drp` files are critical backups but do not contain media
+- Use versioned filenames for safe rollbacks
 
 ---
 
-### 06_Renders
+## 06_Renders
 
-Contains rendered exports.
+Contains final and review exports.
 
 Example:
 
 ```text
 06_Renders/
 ├── Review/
-│   └── short-v03.mp4
-│
+│   └── project-v03.mp4
 └── Final/
-    └── short-final.mp4
+    └── project-final.mp4
 ```
-
----
-
-### 07_Proxies
-
-Optional manually generated proxies.
 
 Notes:
 
-- Often unnecessary for short-form editing on modern Macs
-- Useful for large projects or slower systems
+- Separate review and final renders
+- Keep old review versions until the final is approved
 
 ---
 
-# Resolve Settings
+## 07_Proxies
+
+Optional proxy media.
+
+When to use:
+
+- Large camera files on slower systems
+- Complex timelines where optimized playback helps
+
+When not to use:
+
+- Modern Macs often do not require manual proxies for short-form work
+
+---
+
+# Resolve Preferences
 
 ## Media Storage / Cache Location
 
@@ -237,12 +257,12 @@ DaVinci Resolve → Preferences → Media Storage
 Add:
 
 ```text
-/Users/my-user/Movies/Resolve/Cache/
+/Users/<your-user>/Movies/Resolve/Cache/
 ```
 
-Move it to the TOP of the list.
+Then move it to the top of the list.
 
-This tells Resolve to place:
+This ensures Resolve stores:
 
 - Cache files
 - Optimized media
@@ -253,37 +273,43 @@ inside the dedicated cache folder.
 
 ---
 
-# Backup Workflow
+# Editing Backup Workflow
 
 ## During Editing
 
-Regularly:
+Regularly export project backups:
 
 ```text
 File → Export Project
 ```
 
-Save `.drp` files into:
+Save `.drp` files to:
 
 ```text
 05_Project/
 ```
 
-Use versioned filenames:
+Use versioned filenames such as:
 
 ```text
-short-v01.drp
-short-v02.drp
-short-final.drp
+project-v01.drp
+project-v02.drp
+project-final.drp
 ```
+
+Why this matters:
+
+- Protects against corrupted project files
+- Makes it easy to revert to a previous edit
+- Keeps a clean audit trail of project progress
 
 ---
 
 # Archiving Workflow
 
-## When Project Is Finished
+## When a project is finished
 
-Move the entire project folder to NAS.
+Move the complete project folder to NAS or long-term archive.
 
 This preserves:
 
@@ -293,60 +319,64 @@ This preserves:
 - Graphics
 - Audio
 
-in one portable structure.
+Why archive the whole folder:
+
+- Keeps the project portable
+- Makes relinking and restoring easier later
+- Reduces confusion when projects are revisited
 
 ---
 
-# Important Professional Rules
+# Professional Rules
 
-## Safe To Delete
+## Safe to delete
 
 - Cache files
 - Render cache
 - Optimized media
 - Proxy files
 
-These can always be regenerated.
+These can be regenerated from the original project.
 
 ---
 
-## Never Delete Casually
+## Never delete casually
 
 - Original footage
 - `.drp` project files
 - Final renders
 
-These are the real source assets.
+These are your source assets and deliverables.
 
 ---
 
 # Recommended Editing Habits
 
-## Use Versioned Exports
+## Use versioned exports
 
-Example:
+Examples:
 
 ```text
-short-v01.mp4
-short-v02.mp4
-short-final.mp4
+project-v01.mp4
+project-v02.mp4
+project-final.mp4
 ```
 
-Avoid overwriting old versions.
+Avoid overwriting old versions whenever possible.
 
 ---
 
-## Use Versioned `.drp` Saves
+## Use versioned `.drp` saves
 
-Example:
+Examples:
 
 ```text
-short-v01.drp
-short-v02.drp
-short-final.drp
+project-v01.drp
+project-v02.drp
+project-final.drp
 ```
 
-Protects against:
+This protects against:
 
 - Corrupted projects
 - Bad edits
@@ -354,12 +384,12 @@ Protects against:
 
 ---
 
-## Keep Active Projects Local
+## Keep projects local
 
-Best workflow:
+Best practice:
 
-- Active projects on local SSD
-- Cache on fastest SSD
+- Projects on local SSD while active
+- Cache on the fastest SSD available
 - Finished projects archived to NAS
 
 ---
@@ -382,18 +412,17 @@ Use for:
 
 - Finished projects
 - Long-term archive
-- Backup storage
+- Secondary backups
 
 ---
 
 # Summary
 
-This workflow gives:
+This workflow delivers:
 
-- Professional project organization
-- Easier backups
-- Safer archives
-- Cleaner Resolve setup
-- Better long-term scalability
-- Faster troubleshooting and media relinking
+- Consistent project organization
+- Clear separation between source media and Resolve system files
+- Safer backups and archives
+- Easier relinking and migration
+- A generic structure that works for shorts and regular videos
 
